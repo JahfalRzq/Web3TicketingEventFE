@@ -1,161 +1,121 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { SiWalletconnect } from "react-icons/si";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import '../../app/styles/register.css';
+
+const schema = yup.object({
+  username: yup.string().required('Username is required').min(5, 'Username must be at least 5 characters'),
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
+}).required();
+
 
 const RegisterPage = () => {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const onSubmit = async (data: any) => {
+    try {
+      // Simulate API call (replace with your actual API call)
+      console.log("Form submitted:", data);
+      // After successful submission, reset the form
+      reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle errors appropriately (e.g., display an error message)
+    }
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center bg-gray-900 text-white">
-      {/* Banner Image - reduced height */}
-      <div className="w-full h-52 md:h-64 lg:h-72 relative">
+    <div className="relative min-h-screen w-full flex flex-col items-center bg-gray-900 text-white overflow-hidden"> {/* Removed auth-page class */}
+      <div className="auth-background w-full"> {/* Added w-full */}
         <Image
           src="/Asets/authBanner.png"
           alt="Fantasy Gate Banner"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           priority
         />
-        {/* Time overlay */}
-        <div className="absolute top-10 left-6 text-white text-lg font-semibold">
-          9:41
-        </div>
-        {/* Network icons overlay */}
-        <div className="absolute top-10 right-6 flex space-x-2">
-          <div className="w-5 h-5">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M7 19h2a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1zm4 0h2a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1zm4 0h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1z" />
-            </svg>
-          </div>
-          <div className="w-5 h-5">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" fillOpacity="0" />
-              <path d="M5.64 18.36A9 9 0 0 0 12 21v-3a6 6 0 0 1-4.24-1.76l-2.12 2.12z" />
-              <path d="M16.24 16.24A6 6 0 0 1 12 18v3a9 9 0 0 0 6.36-2.64l-2.12-2.12z" />
-              <path d="M19.07 4.93A9 9 0 0 0 12 3v3a6 6 0 0 1 4.24 1.76l2.83-2.83z" />
-              <path d="M7.76 7.76A6 6 0 0 1 12 6V3a9 9 0 0 0-6.36 2.64l2.12 2.12z" />
-            </svg>
-          </div>
-          <div className="w-5 h-5">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M18 9h-2V7h2v2zm-8 8h2v-2h-2v2zm-8-8h2V7H2v2zm12 8h2v-2h-2v2zm4-8h2V7h-2v2zM6 9h2V7H6v2zm8 0h2V7h-2v2zm-4 8h2v-2h-2v2zm-4 0h2v-2H6v2z" />
-            </svg>
-          </div>
-        </div>
       </div>
 
-      {/* Form Container - increased negative margin to reduce the gap */}
-      <div className="w-full max-w-md px-6 -mt-24 relative z-10">
-        {/* Welcome Text - reduced margin */}
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold mb-1">Welcome!</h1>
-          <p className="text-lg text-gray-300">Get ready for amazing experiences.</p>
-        </div>
+      <div className="auth-container max-w-2xl mx-auto p-8 mt-16 bg-gray-800/70 rounded-lg shadow-lg"> {/* Modified container */}
+        <h1 className="text-3xl font-bold mb-4 text-white">Welcome!</h1>
+        <p className="text-lg mb-6 text-gray-300">Begin your magical journey</p>
 
-        {/* Form Fields - reduced spacing */}
-        <form className="space-y-3">
-          {/* Username */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium mb-1">
-              Username
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaUser className="text-gray-400" />
-              </div>
-              <input
-                type="text"
-                id="username"
-                placeholder="Input Username"
-                className="w-full bg-gray-100 text-gray-800 pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              />
-            </div>
+            <label htmlFor="username" className="block text-gray-300 mb-1">Username</label>
+            <input
+              {...register('username')}
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              className="w-full px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700 text-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50"
+            />
+            {errors.username && <span className="text-red-500 text-sm">{errors.username.message}</span>}
           </div>
 
-          {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">
-              Email
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaEnvelope className="text-gray-400" />
-              </div>
-              <input
-                type="email"
-                id="email"
-                placeholder="Input your Email"
-                className="w-full bg-gray-100 text-gray-800 pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              />
-            </div>
+            <label htmlFor="email" className="block text-gray-300 mb-1">Email</label>
+            <input
+              {...register('email')}
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700 text-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50"
+            />
+            {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
           </div>
 
-          {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium mb-1">
-              Passwords
-            </label>
+            <label htmlFor="password" className="block text-gray-300 mb-1">Password</label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaLock className="text-gray-400" />
-              </div>
               <input
+                {...register('password')}
                 type={showPassword ? "text" : "password"}
                 id="password"
-                placeholder="Input Password"
-                className="w-full bg-gray-100 text-gray-800 pl-10 pr-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700 text-white focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 pr-10"
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                onClick={togglePasswordVisibility}
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-300"
               >
-                {showPassword ? (
-                  <FaEyeSlash className="text-gray-400" />
-                ) : (
-                  <FaEye className="text-gray-400" />
-                )}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
+              {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
             </div>
           </div>
 
-          {/* Register Button - reduced top margin */}
-          <button
-            type="submit"
-            className="w-full py-3 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600 transition-colors mt-4"
-          >
-            Register
+          <button type="submit" className="w-full py-3 bg-cyan-500 text-white rounded-lg font-medium hover:bg-cyan-600">
+            Create Account
           </button>
         </form>
 
-        {/* Divider - reduced vertical margin */}
-        <div className="flex items-center my-4">
-          <div className="flex-grow border-t border-gray-600"></div>
-          <span className="px-4 text-gray-400">or</span>
-          <div className="flex-grow border-t border-gray-600"></div>
-        </div>
-
-        {/* Social Login Options - reduced spacing */}
-        <div className="space-y-2">
-          <button className="w-full py-3 border border-cyan-500 text-cyan-500 rounded-lg font-medium hover:bg-gray-800 transition-colors flex justify-center items-center">
-            Google
-          </button>
-          <button className="w-full py-3 border border-cyan-500 text-cyan-500 rounded-lg font-medium hover:bg-gray-800 transition-colors flex justify-center items-center">
-            Wallet Connect
-          </button>
-        </div>
-
-        {/* Login Link - reduced top margin */}
-        <div className="text-center mt-4 mb-6">
-          <p className="text-gray-400">
-            Already Have an Account?{" "}
+        {/* Social Login and Login Link (Simplified) */}
+        <div className="mt-6 text-center">
+          <p className="text-gray-400">or continue with</p>
+          <div className="flex space-x-4 mt-2">
+            <button className="bg-gray-800 hover:bg-gray-700 text-white rounded-lg px-6 py-2">
+              <FaGoogle className="text-red-500 mr-2" /> Google
+            </button>
+            <button className="bg-gray-800 hover:bg-gray-700 text-white rounded-lg px-6 py-2">
+              <SiWalletconnect className="text-blue-500 mr-2" /> Wallet Connect
+            </button>
+          </div>
+          <p className="mt-4 text-gray-400">
+            Already have an account?{" "}
             <Link href="/login" className="text-cyan-400 hover:underline">
-              Login Here!
+              Login here
             </Link>
           </p>
         </div>
