@@ -78,7 +78,7 @@ export function RegisterForm({
               <a href="#" className="underline underline-offset-4 text-[#00B4D8] font-semibold">
                 Sign in
               </a>
-            </div>
+      </div>
     </div>
   )
 }
