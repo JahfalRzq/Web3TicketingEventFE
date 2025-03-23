@@ -31,7 +31,7 @@ export default function Home() {
   </div>
       </header>
       <div className="relative flex min-h-screen items-center justify-center p-6 md:p-10 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/Asets/CardBanner.png')" }}>
+      style={{ backgroundImage: "url('/Asets/bannerWith1200.png')" }}>
       </div>
       {/* Main Content */}
       <main className="flex flex-col items-center p-4">   
@@ -92,7 +92,7 @@ export default function Home() {
         <div className="relative h-48">
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/Asets/CardBanner.png')" }}
+            style={{ backgroundImage: "url('/Asets/SuiWith1200.png')" }}
           >
             <div className="absolute inset-0 bg-black/30"></div>
           </div>
@@ -161,7 +161,7 @@ export default function Home() {
         <div className="relative h-48">
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/Asets/CardBanner.png')" }}
+            style={{ backgroundImage: "url('/Asets/cardWith1200.png')" }}
           >
             <div className="absolute inset-0 bg-black/30"></div>
           </div>
@@ -212,31 +212,91 @@ export default function Home() {
 </section>
 
         {/* Leaderboard Section */}
-        <section className="w-full mb-8">
-          <h2 className="text-2xl mb-4">Leaderboard Participant</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {Array(6).fill(0).map((_, index) => (
-              <div key={index} className="bg-gray-700 p-4 rounded-lg flex justify-between items-center">
-                <p>Brittany</p>
-                <span className="text-sm text-gray-400">Champion | 2000 EXP</span>
-              </div>
-            ))}
-          </div>
-        </section>
+<section className="w-full mb-8">
+  {/* Banner Section */}
+
+  <h2 className="text-2xl mb-4 text-white">Leaderboard Participant</h2>
+  <div className="grid grid-cols-1 gap-3">
+    {Array(7).fill(0).map((_, index) => (
+      <div 
+        key={index} 
+        className="bg-[#2D2D2D] p-4 rounded-lg flex justify-between items-center"
+      >
+        {/* Participant Avatar */}
+        <div className="flex items-center gap-3">
+  <div 
+    className="w-8 h-8"
+    style={{ 
+      backgroundImage: "url('/Asets/Frame31.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '50%'
+    }}
+  />
+  <span className="text-white">Brittany</span>
+</div>
+        
+        <div className="text-right">
+          <p className="text-sm text-[#E5E5E5]">Champion · 250 Event NFT</p>
+          <p className="text-sm text-[#808080]">2000 EXP</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
         
       </main>
 
-      {/* Footer Section */}
-      <footer className="flex justify-between items-center p-4 bg-gray-900">
-        <div>
-          <p>Follow us on</p>
-          <p>2000 EXP</p>
+     {/* Footer Section */}
+<footer className="flex flex-col md:flex-row justify-between items-start p-6 bg-gray-900 text-white gap-8">
+  {/* Social Links Section */}
+  <div className="flex flex-col md:flex-row gap-8 flex-1">
+    <div>
+      <p className="font-bold mb-3">Follow us on</p>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+        <div className="flex flex-col">
+          <a href="#" className="hover:text-gray-300">Instagram</a>
+          <a href="#" className="hover:text-gray-300">Twitter</a>
+          <a href="#" className="hover:text-gray-300">Discord</a>
         </div>
-        <div>
-          <p>Documentation</p>
-          <p>2000 EXP</p>
+        <div className="flex flex-col">
+          <a href="#" className="hover:text-gray-300">Youtube</a>
+          <a href="#" className="hover:text-gray-300">Facebook</a>
+          <a href="#" className="hover:text-gray-300">Tiktok</a>
         </div>
-      </footer>
+      </div>
+    </div>
+
+  {/* Documentation Section - Centered */}
+<div className="mt-4 md:mt-0  md:text-left w-full md:w-auto">
+  <p className="font-bold mb-3">Documentation</p>
+  <div className="flex justify-center">
+    <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+      <div className="flex flex-col">
+        <a href="#" className="hover:text-gray-300">Instagram</a>
+        <a href="#" className="hover:text-gray-300">Twitter</a>
+        <a href="#" className="hover:text-gray-300">Discord</a>
+      </div>
+      <div className="flex flex-col">
+        <a href="#" className="hover:text-gray-300">Youtube</a>
+        <a href="#" className="hover:text-gray-300">Facebook</a>
+        <a href="#" className="hover:text-gray-300">Tiktok</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+
+</footer>
+  {/* Copyright Section */}
+  <div className="md:text-center mt-4 md:mt-0" style={{ backgroundImage: "url('/Asets/footer.png')" }}>
+    <p className="text-gray-400">myt:us 2025</p>
+</div>
+
     </div>
   );
 }
+
