@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'; // Add this import at the top of your file
 import { Header } from '../../components/layout/header';
 import { SearchSection } from '../../components/home/searchSection';
+
 
 // Ticket Tier Interface
 interface TicketTier {
@@ -151,40 +152,50 @@ return (
             </div>
           </div>
 
-          {/* Ticket Tiers Section */}
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold mb-4">Ticket Tiers</h2>
-            <div className="space-y-4">
-              {event.ticketTiers.map((tier, index) => (
-                <div 
-                  key={index} 
-                  className="bg-gray-800 rounded-lg p-4 flex items-center justify-between"
-                >
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold mb-1">{tier.name}</h3>
-                    <p className="text-sm text-gray-400 mb-1">
-                      {tier.nftType} • Harga tiket sudah termasuk pajak pemerintah • Can't be refund
-                    </p>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="text-right">
-                      <div className="text-blue-400 font-semibold">
-                        Total (1 Pax) {tier.price}
-                      </div>
-                      <div className="text-green-400 text-sm">
-                        Get {tier.experiencePoints} Experience Points
-                      </div>
-                    </div>
-                    <button 
-                      className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition duration-300"
-                    >
-                      Pick Ticket
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+
+{/* Ticket Tiers Section */}
+{/* Ticket Tiers Section */}
+<div className="space-y-4">
+  <h2 className="text-xl font-semibold mb-4">Ticket Tiers</h2>
+  <div className="space-y-4">
+    {event.ticketTiers.map((tier, index) => (
+      <div 
+        key={index} 
+        className="bg-gray-800 rounded-lg p-4 border border-gray-600"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex-1 mr-4">
+            <h3 className="text-lg font-bold">{tier.name}</h3>
+            <p className="text-xs text-gray-400 mb-2">
+              Harga tiket sudah termasuk pajak pemerintah
+            </p>
+            <p className="text-xs text-gray-400 mb-2">Cant be refunded</p>
+            <p className="text-xs text-gray-400">
+              {tier.nftType}
+            </p>
+            <span className="text-sm text-blue-400 cursor-pointer">Detail</span>
           </div>
+
+          <div className="flex flex-col items-end">
+            <div className="text-sm mb-1">
+              <span className="text-gray-400">Total (1 Pax)</span>
+            </div>
+            <div className="text-blue-400 font-semibold text-lg mb-2">
+              {tier.price}
+            </div>
+            <div className="text-green-400 text-sm mb-2">
+              Get {tier.experiencePoints} Experience Points
+            </div>
+            <button className="bg-teal-500 hover:bg-teal-400 text-white py-2 px-4 rounded flex items-center transition duration-300">
+              Pick Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
           
           <div className="prose prose-invert">
             <h2 className="text-xl font-semibold mb-4">Event Description</h2>
