@@ -74,6 +74,7 @@ return (
     <Header />
     
     <main className="container mx-auto px-4 py-8">
+      <SearchSection />
       
       <div className="max-w-4xl mx-auto mt-8 grid md:grid-cols-2 gap-8">
         {/* Event Image */}
@@ -153,29 +154,33 @@ return (
           {/* Ticket Tiers Section */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold mb-4">Ticket Tiers</h2>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="space-y-4">
               {event.ticketTiers.map((tier, index) => (
                 <div 
                   key={index} 
-                  className="bg-gray-800 rounded-lg p-4 text-center transform transition duration-300 hover:scale-105 hover:shadow-lg"
+                  className="bg-gray-800 rounded-lg p-4 flex items-center justify-between"
                 >
-                  <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
-                  <div className="text-sm text-gray-400 mb-2">
-                    <p>{tier.nftType}</p>
-                    <p>Harga tiket sudah termasuk pajak pemerintah</p>
-                    <p>Can't be refund</p>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold mb-1">{tier.name}</h3>
+                    <p className="text-sm text-gray-400 mb-1">
+                      {tier.nftType} • Harga tiket sudah termasuk pajak pemerintah • Can't be refund
+                    </p>
                   </div>
-                  <div className="text-blue-400 font-semibold mb-2">
-                    {tier.price}
+                  <div className="flex items-center space-x-4">
+                    <div className="text-right">
+                      <div className="text-blue-400 font-semibold">
+                        Total (1 Pax) {tier.price}
+                      </div>
+                      <div className="text-green-400 text-sm">
+                        Get {tier.experiencePoints} Experience Points
+                      </div>
+                    </div>
+                    <button 
+                      className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded transition duration-300"
+                    >
+                      Pick Ticket
+                    </button>
                   </div>
-                  <div className="text-green-400">
-                    Get {tier.experiencePoints} Experience Points
-                  </div>
-                  <button 
-                    className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition duration-300"
-                  >
-                    Pick Ticket
-                  </button>
                 </div>
               ))}
             </div>
