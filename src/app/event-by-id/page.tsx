@@ -75,7 +75,6 @@ return (
     <Header />
     
     <main className="container mx-auto px-4 py-8">
-      <SearchSection />
       
       <div className="max-w-4xl mx-auto mt-8 grid md:grid-cols-2 gap-8">
         {/* Event Image */}
@@ -154,14 +153,13 @@ return (
 
 
 {/* Ticket Tiers Section */}
-{/* Ticket Tiers Section */}
 <div className="space-y-4">
   <h2 className="text-xl font-semibold mb-4">Ticket Tiers</h2>
   <div className="space-y-4">
     {event.ticketTiers.map((tier, index) => (
       <div 
         key={index} 
-        className="bg-gray-800 rounded-lg p-4 border border-gray-600"
+        className="bg-gray-800 rounded-lg p-4 border border-gray-600 transition-shadow hover:shadow-lg"
       >
         <div className="flex items-center justify-between">
           <div className="flex-1 mr-4">
@@ -170,9 +168,7 @@ return (
               Harga tiket sudah termasuk pajak pemerintah
             </p>
             <p className="text-xs text-gray-400 mb-2">Cant be refunded</p>
-            <p className="text-xs text-gray-400">
-              {tier.nftType}
-            </p>
+            <p className="text-xs text-gray-400 mb-2">{tier.nftType}</p>
             <span className="text-sm text-blue-400 cursor-pointer">Detail</span>
           </div>
 
@@ -195,7 +191,6 @@ return (
     ))}
   </div>
 </div>
-
           
           <div className="prose prose-invert">
             <h2 className="text-xl font-semibold mb-4">Event Description</h2>
@@ -206,13 +201,9 @@ return (
             <button 
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
             >
-              Buy Ticket
+              Rgister
             </button>
-            <button 
-              className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition duration-300"
-            >
-              Share Event
-            </button>
+     
           </div>
         </div>
       </div>
