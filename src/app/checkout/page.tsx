@@ -42,7 +42,6 @@ ticketTiers: [
 export default function CheckoutPage({ 
  
 }: { 
-params: { id: string } 
 }) {
 const event = dummyEvent;
 
