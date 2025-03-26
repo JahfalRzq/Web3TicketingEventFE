@@ -109,9 +109,11 @@ return (
 
       {/* Checkout Button */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#181818] shadow-top">
+        <a href="/dashboard">
         <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg">
           Checkout
         </button>
+        </a>
       </div>
     </div>
   </div>
