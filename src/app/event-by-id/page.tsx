@@ -62,7 +62,7 @@ ticketTiers: [
 };
 
 export default function EventDetailPage({ 
-params 
+ 
 }: { 
 params: { id: string } 
 }) {
