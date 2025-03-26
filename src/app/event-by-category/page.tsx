@@ -5,7 +5,6 @@ import { Footer } from "../../components/layout/footer";
 import { Banner } from "../../components/home/banner";
 import { SearchSection } from "../../components/home/searchSection";
 import { EventsSection } from "../../components/home/eventsSection";
-import { LeaderboardSection } from "../../components/home/leaderboardSection";
 
 export default function Home() {
   return (

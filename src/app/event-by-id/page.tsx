@@ -1,6 +1,5 @@
 import React from 'react'; // Add this import at the top of your file
 import { Header } from '../../components/layout/header';
-import { SearchSection } from '../../components/home/searchSection';
 
 
 // Ticket Tier Interface
