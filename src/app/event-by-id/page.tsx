@@ -198,11 +198,14 @@ return (
           </div>
           
           <div className="flex space-x-4">
+            <a href="/checkout">
             <button 
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
             >
-              Rgister
+              Rgister Event
             </button>
+
+            </a>
      
           </div>
         </div>
