@@ -68,10 +68,13 @@ export function EventCard({
           </div>
           <span>{date}</span>
         </div>
+        <a href="/event-by-id"> {/* Change to anchor tag for navigation */}
 
         <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm transition-colors">
           Join Event
         </button>
+        </a>
+
       </div>
     </div>
   );
