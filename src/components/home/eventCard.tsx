@@ -62,7 +62,7 @@ export function EventCard({
           </div>
           <span>{date}</span>
         </div>
-        <Link href="/event-by-id/">
+        <Link href="/event-by-id/blockchain-summit">
   <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg">
     Checkout
   </button>
