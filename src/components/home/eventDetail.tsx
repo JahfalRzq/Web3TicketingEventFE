@@ -32,7 +32,6 @@ interface EventDetailProps {
   description: string;
   attendees: number;
   backgroundImage?: string;
-  logoSrc?: string;
 }
 
 export function EventDetail({
@@ -46,7 +45,6 @@ export function EventDetail({
   description,
   attendees,
   backgroundImage,
-  logoSrc
 }: EventDetailProps) {
   return (
     <div className="bg-[#2C2C2C] rounded-lg overflow-hidden shadow-md">
@@ -60,14 +58,7 @@ export function EventDetail({
             <div className="absolute inset-0 bg-black/30"></div>
           </div>
           
-          {/* Brand Logo */}
-          {logoSrc && (
-            <img
-              src={logoSrc}
-              className="w-12 h-12 absolute top-2 right-2 z-10"
-              alt="Event Logo"
-            />
-          )}
+         
         </div>
       )}
 

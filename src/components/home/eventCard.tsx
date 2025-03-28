@@ -1,9 +1,10 @@
 // src/components/home/EventCard.tsx
 import React from 'react';
+import Link from 'next/link';
+
 
 interface EventCardProps {
   backgroundImage?: string;
-  logoSrc?: string;
   title?: string;
   location?: string;
   date?: string;
@@ -12,7 +13,6 @@ interface EventCardProps {
 
 export function EventCard({ 
   backgroundImage = "/Asets/SuiWith1200.png", 
-  logoSrc = "/Asets/sui-logo.png", 
   title = "Blockchain Day With SUI & Tokocrypto",
   location = "Surabaya",
   date = "21 Dec 24",
@@ -29,12 +29,6 @@ export function EventCard({
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Brand Logo */}
-        <img
-          src={logoSrc}
-          className="w-12 h-12 absolute top-2 right-2 z-10"
-          alt="Event Logo"
-        />
       </div>
 
       {/* Content Section */}
@@ -68,12 +62,11 @@ export function EventCard({
           </div>
           <span>{date}</span>
         </div>
-        <a href="/event-by-id"> {/* Change to anchor tag for navigation */}
-
-        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm transition-colors">
-          Join Event
-        </button>
-        </a>
+        <Link href="/event-by-id/">
+  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg">
+    Checkout
+  </button>
+</Link>
 
       </div>
     </div>
