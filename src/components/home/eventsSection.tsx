@@ -25,7 +25,7 @@ export function EventsSection({
     <section className="w-full mb-8">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl">{title}</h2>
-        <a href="/event-by-category" className="text-blue-500 hover:underline">See All</a>
+        <a href="/event-by-category/blockchain-summit" className="text-blue-500 hover:underline">See All</a>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -33,7 +33,6 @@ export function EventsSection({
           <EventCard 
             key={index} 
             backgroundImage={event.backgroundImage}
-            logoSrc={event.logoSrc}
             title={event.title}
             location={event.location}
             date={event.date}
